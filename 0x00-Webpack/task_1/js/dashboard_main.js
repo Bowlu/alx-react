@@ -15,4 +15,4 @@ function updateCounter() {
   numberCount++;
 }
 
-$('button').on('click', _debounce(updateCounter, 500));
+$('button').on('click', _.debounce(updateCounter, 500));
