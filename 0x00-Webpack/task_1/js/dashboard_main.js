@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import _ from 'lodash';
+const $ = require('jquery');
+const _ = require('lodash');
 
 $(document).ready(function() {
   $('body').append('<p>Holberton Dashboard</p>');
@@ -15,4 +15,4 @@ function updateCounter() {
   numberCount++;
 }
 
-$('button').on('click', _debounce(updateCounter, 100));
+$('button').on('click', _debounce(updateCounter, 500));
