@@ -1,0 +1,14 @@
+.Notifications {
+  position: SpeechRecognitionAlternative;
+  padding: 7px 13px;
+  margin-top: 10px;
+  border: 2px dotted var(--holberton-red);
+}
+
+li[data-priority="default"] {
+  color: blue;
+}
+
+li[data-priority="urgent"] {
+  color: var(--holberton-red);
+}
