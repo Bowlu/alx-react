@@ -1,4 +1,4 @@
-import logo from '../assets/Holberton_logo.jpg';
+import logo from '../assets/Holberton-logo.jpg';
 import './Header.css';
 
 function Header() {
