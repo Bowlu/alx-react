@@ -27,6 +27,30 @@ class App extends React.Component {
     {id: 2, value: "New resume available", type: "urgent"},
     {id: 3, html: {__html: getLatestNotification()}, type: "urgent"},
   ];
+
+  constructor(props) {
+    super(props);
+    this.isLoggedIn = props.isLoggedIn;
+    this.logOut = props.logOut;
+    this.handleDownKey = this.handleDownKey.bind(this);
+  }
+
+  handleDownKey(out) {
+    out.preventDefault();
+
+    if (out.ctrlKey && out.key === "h") {
+      alert("Logging you out");
+      this.logOut();
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleDownKey);
+  }
+
+  componentWillUnmount() {
+    window.addEventListener('keydown', this.handleDownKey);
+  }
 }
   return (
     <React.Fragment>
