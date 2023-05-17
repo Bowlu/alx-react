@@ -9,7 +9,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 
 
-class Notifications extends React.component {
+class Notifications extends React.Component {
     constructor(props) {
         super(props);
         this.markAsRead = this.markAsRead.bind(this);

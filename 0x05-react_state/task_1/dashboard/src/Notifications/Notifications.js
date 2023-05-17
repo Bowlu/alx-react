@@ -7,20 +7,9 @@ import NotificationItemShape from './NotificationItemShape';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
-Notifications.defaultProps = {
-    displayDrawer: false,
-    handleDisplayDrawer: () => {},
-    handleHideDrawer: () => {},    listNotifications: []
-};
 
-Notifications.Props = {
-    displayDrawer: PropTypes.bool,
-    handleDisplayDrawer: PropTypes.func,
-    handleHideDrawer: PropTypes.func,
-    listNotifications: PropTypes.arrayOf(NotificationItemShape)
-};
 
-class Notifications extends React.component {
+class Notifications extends React.Component {
     constructor(props) {
         super(props);
         this.markAsRead = this.markAsRead.bind(this);
@@ -104,5 +93,18 @@ const notificationsStyle = StyleSheet.create({
         }
     }
 })
+
+Notifications.defaultProps = {
+    displayDrawer: false,
+    handleDisplayDrawer: () => {},
+    handleHideDrawer: () => {},    listNotifications: []
+};
+
+Notifications.Props = {
+    displayDrawer: PropTypes.bool,
+    handleDisplayDrawer: PropTypes.func,
+    handleHideDrawer: PropTypes.func,
+    listNotifications: PropTypes.arrayOf(NotificationItemShape)
+};
 
 export default Notification;
