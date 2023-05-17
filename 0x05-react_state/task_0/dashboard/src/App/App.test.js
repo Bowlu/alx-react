@@ -55,7 +55,7 @@ describe('checks for default displayDrawer', () => {
 
   it('shows the state of handleDisplayDrawer', () => {
     const check = mount(<App />);
-    check.instance().handleDisplayDrawer;
+    check.instance().handleDisplayDrawer();
     expect(check.state('displayDrawer')).toBe(true);
   });
 

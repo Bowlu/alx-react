@@ -9,11 +9,14 @@ import { StyleSheet, css } from 'aphrodite';
 
 Notifications.defaultProps = {
     displayDrawer: false,
-    listNotifications: []
+    handleDisplayDrawer: () => {},
+    handleHideDrawer: () => {},    listNotifications: []
 };
 
 Notifications.Props = {
     displayDrawer: PropTypes.bool,
+    handleDisplayDrawer: PropTypes.func,
+    handleHideDrawer: PropTypes.func,
     listNotifications: PropTypes.arrayOf(NotificationItemShape)
 };
 
@@ -34,11 +37,13 @@ class Notifications extends React.component {
     render() {
         return (
         <>
-            <div className="menuItem">Your notifications</div>
             { this.props.displayDrawer ?
+                <div className={css(notificationsStyle.menuItem)} onClick={this.props.handleDisplayDrawer}>Your notifications</div>
+                :
             <div className={css(notificationsStyle.notification)}>
                 <p>Here is the list of notifications</p>
-                <button style={{ position: 'absolute', right: '8px', top: '7px', border: 'none', outline: 'none', cursor: 'pointer', background: 'none',fontWeight: 'bold', fontSize: '13px', color: 'a9a9a9' }} aria-label="Close" onClick={(e) => {console.log("Close button has been clicked");}}>
+                <button style={{ position: 'absolute', right: '8px', top: '7px', border: 'none', outline: 'none', cursor: 'pointer', background: 'none',fontWeight: 'bold', fontSize: '13px', color: 'a9a9a9' }} aria-label="Close" onClick={(e) => {console.log("Close button has been clicked");
+                this.props.handleHideDrawer();}}>
                     <img src={closeIcon} alt='close'/> 
                 </button>
                 { this.props.listNotifications.length != 0 ?
@@ -59,8 +64,7 @@ class Notifications extends React.component {
                     })}
                 </ul>
             </div>
-            :
-            null}
+    }
         </>
         );  
     };

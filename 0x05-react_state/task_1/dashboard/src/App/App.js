@@ -10,15 +10,6 @@ import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import { StyleSheet, css } from 'aphrodite';
 
-App.defaultProps = {
-  isLoggedIn: false,
-  logOut: () => {}
-};
-
-App.Props = {
-  isLoggedIn: PropTypes.bool,
-  logOut: PropTypes.func
-};
 
 class App extends React.Component {
 
@@ -40,7 +31,7 @@ class App extends React.Component {
     ];
 
     this.state = {
-      displayDrawer: true
+      displayDrawer: false
     };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
@@ -100,6 +91,16 @@ class App extends React.Component {
     );
   }
 }
+
+App.defaultProps = {
+  isLoggedIn: false,
+  logOut: () => {}
+};
+
+App.Props = {
+  isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func
+};
 
 const bodyStyle = StyleSheet.create({
   App: {
