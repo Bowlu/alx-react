@@ -107,4 +107,4 @@ Notifications.Props = {
     listNotifications: PropTypes.arrayOf(NotificationItemShape)
 };
 
-export default Notifications;
+export default Notification;

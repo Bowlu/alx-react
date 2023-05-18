@@ -64,4 +64,42 @@ describe('checks for default displayDrawer', () => {
     check.instance().handleHideDrawer();
     expect(check.state('displayDrawer')).toBe(false);
   });
+  it('verify updated state', () => {
+    const check = mount(<AppContext.Provider value={{ user, logOut }}>
+      <App />
+    </AppContext.Provider>);
+    check.instance().logOut();
+    expect(check.state().user).toEqual(user);
+  });
+  it('verify logIn function update', () => {
+    const newUser ={
+      email: 'tunrayo@gmail.com',
+      isLoggedIn: true,
+      password: '456678'
+    };
+    const check = mount(<AppContext.Provider value={{ user, logOut }}>
+      <App />
+    </AppContext.Provider>);
+    check.instance().logIn('tunrayo@gmail.com', '456678');
+    expect(check.state().user).toEqual(newUser);
+  });
+  it('verify logOut function update', () => {
+    const check = mount(<AppContext.Provider value={{ user, logOut }}>
+      <App />
+    </AppContext.Provider>);
+    check.instance().logIn('tunrayo@gmail.com', '456678');
+    check.instance().logOut();
+    expect(check.state().user).toEqual(user);
+  });
+  it('check markNotificationAsRead', () => {
+    const info = [
+      { id: 1, type: 'default', value: 'New course available', },
+      { id: 2, type: 'urgent', value: 'New resume available', }
+    ];
+    const check = mount(<AppContext.Provider value={{ user, logOut }}>
+      <App />
+    </AppContext.Provider>);
+    check.instance().markNotificationAsRead(3);
+    expect(check.state().listNotifications).toEqual(notification);
+  });
 });

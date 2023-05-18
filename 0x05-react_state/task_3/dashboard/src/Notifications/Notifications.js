@@ -12,18 +12,12 @@ import { StyleSheet, css } from 'aphrodite';
 class Notifications extends React.Component {
     constructor(props) {
         super(props);
-        this.markAsRead = this.markAsRead.bind(this);
     }
 
-    markAsRead(id) {
-        console.log(`Notification ${id} has been marked as read`);
-    }
-
-    shouldComponentUpdate(newProps) {
-        return newProps.listNotifications.length > this.props.listNotifications.length || this.props.displayDrawer != newProps.displayDrawer;
-    }
     
     render() {
+        const { displayDrawer, listNotifications, handleDrawer, handleHideDrawer, markNotificationAsRead } = this.props;
+        const displayMenu = displayDrawer ? StyleSheet.noDisplay : styles.menuItem;
         return (
         <>
             { this.props.displayDrawer ?
@@ -97,14 +91,16 @@ const notificationsStyle = StyleSheet.create({
 Notifications.defaultProps = {
     displayDrawer: false,
     handleDisplayDrawer: () => {},
-    handleHideDrawer: () => {},    listNotifications: []
+    handleHideDrawer: () => {},    listNotifications: [],
+    markNotificationAsRead: () => {}
 };
 
 Notifications.Props = {
     displayDrawer: PropTypes.bool,
     handleDisplayDrawer: PropTypes.func,
     handleHideDrawer: PropTypes.func,
-    listNotifications: PropTypes.arrayOf(NotificationItemShape)
+    listNotifications: PropTypes.arrayOf(NotificationItemShape),
+    markNotificationAsRead: PropTypes.func
 };
 
 export default Notifications;
